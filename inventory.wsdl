@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://integration.shipedge.com/API/Inventory/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://integration.shipedge.com/API/Inventory/">
+<types>
+<xsd:schema targetNamespace="http://integration.shipedge.com/API/Inventory/"
+>
+ <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+ <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+ <xsd:complexType name="SkuQty">
+  <xsd:all>
+   <xsd:element name="SKU" type="xsd:string"/>
+   <xsd:element name="Qty" type="xsd:int"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="SynSetDetaillSKU">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:SkuQty[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="ReplenishmentDetaill">
+  <xsd:all>
+   <xsd:element name="ReplenishmentID" type="xsd:string"/>
+   <xsd:element name="ReplenishmentStatus" type="xsd:string"/>
+   <xsd:element name="ExpectedDate" type="xsd:string"/>
+   <xsd:element name="Comment" type="xsd:string"/>
+   <xsd:element name="QtyRequest" type="xsd:string"/>
+   <xsd:element name="QtyRecived" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ReplenishmentDetaillSKU">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:ReplenishmentDetaill[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="skuArray">
+  <xsd:all>
+   <xsd:element name="Sku" type="xsd:string"/>
+   <xsd:element name="UPC" type="xsd:string"/>
+   <xsd:element name="Description" type="xsd:string"/>
+   <xsd:element name="Cost" type="xsd:decimal"/>
+   <xsd:element name="Declared" type="xsd:decimal"/>
+   <xsd:element name="Weight" type="xsd:decimal"/>
+   <xsd:element name="Length" type="xsd:decimal"/>
+   <xsd:element name="Width" type="xsd:decimal"/>
+   <xsd:element name="Height" type="xsd:decimal"/>
+   <xsd:element name="Quantity" type="xsd:int"/>
+   <xsd:element name="Supplier" type="xsd:string"/>
+   <xsd:element name="SynSet" type="xsd:string"/>
+   <xsd:element name="Volume" type="xsd:decimal"/>
+   <xsd:element name="UnitsInStock" type="xsd:int"/>
+   <xsd:element name="StockInExtWH" type="xsd:int"/>
+   <xsd:element name="ClientOpt1" type="xsd:string"/>
+   <xsd:element name="ClientOpt2" type="xsd:string"/>
+   <xsd:element name="ClientOpt3" type="xsd:string"/>
+   <xsd:element name="Harmonization" type="xsd:string"/>
+   <xsd:element name="CountryOrigin" type="xsd:string"/>
+   <xsd:element name="Discontinued" type="xsd:string"/>
+   <xsd:element name="Kind" type="xsd:string"/>
+   <xsd:element name="Replenishment" type="tns:ReplenishmentDetaillSKU"/>
+   <xsd:element name="SynSetDetaill" type="tns:SynSetDetaillSKU"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="skus">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:skuArray[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="access">
+  <xsd:all>
+   <xsd:element name="AccountID" type="xsd:int"/>
+   <xsd:element name="Key" type="xsd:string"/>
+   <xsd:element name="Warehouse" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="variable">
+  <xsd:all>
+   <xsd:element name="Kind" type="xsd:string"/>
+   <xsd:element name="qtyUnder" type="xsd:int"/>
+   <xsd:element name="Page" type="xsd:int"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="page">
+  <xsd:all>
+   <xsd:element name="Page" type="xsd:int"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="qtyUnder"/>
+ <xsd:complexType name="supplierList">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="xsd:string[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="OrderBy">
+  <xsd:all>
+   <xsd:element name="OrderBy" type="xsd:string"/>
+   <xsd:element name="Field" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="kindData">
+  <xsd:all>
+   <xsd:element name="Kind" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="skuList">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="xsd:string[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="accessResponse">
+  <xsd:all>
+   <xsd:element name="AccountID" type="xsd:int"/>
+   <xsd:element name="AccessAccount" type="xsd:string"/>
+   <xsd:element name="Warehouse" type="xsd:string"/>
+   <xsd:element name="NumItems" type="xsd:int"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="skusResponse">
+  <xsd:all>
+   <xsd:element name="access" type="tns:accessResponse"/>
+   <xsd:element name="skuResp" type="tns:skus"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="allow">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:skuRespAddAllow[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="denied">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:skuRespAddDenied[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="skuRespAddAllow">
+  <xsd:all>
+   <xsd:element name="Sku" type="xsd:string"/>
+   <xsd:element name="CommentAPI" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="skuRespAddDenied">
+  <xsd:all>
+   <xsd:element name="Sku" type="xsd:string"/>
+   <xsd:element name="CommentAPI" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="listSku">
+  <xsd:all>
+   <xsd:element name="allow" type="xsd:string"/>
+   <xsd:element name="denied" type="tns:denied"/>
+   <xsd:element name="replenishment_id" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="addSkusResponse">
+  <xsd:all>
+   <xsd:element name="access" type="tns:accessResponse"/>
+   <xsd:element name="addListSkus" type="tns:listSku"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="skuReplenishmentArray">
+  <xsd:all>
+   <xsd:element name="Sku" type="xsd:string"/>
+   <xsd:element name="Quantity" type="xsd:int"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="skusReplenishment">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:skuReplenishmentArray[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="SkuList">
+  <xsd:all>
+   <xsd:element name="New" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="RepleResult">
+  <xsd:all>
+   <xsd:element name="New" type="tns:SkuList"/>
+   <xsd:element name="Exist" type="tns:SkuList"/>
+   <xsd:element name="Error" type="tns:SkuList"/>
+   <xsd:element name="ReplenishmentID" type="tns:SkuList"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="Replenishment">
+  <xsd:all>
+   <xsd:element name="Upload" type="xsd:string"/>
+   <xsd:element name="ResultProcessing" type="tns:RepleResult"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="replenishmentResponse">
+  <xsd:all>
+   <xsd:element name="access" type="tns:accessResponse"/>
+   <xsd:element name="replenishmentResp" type="tns:Replenishment"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="totalResponse">
+  <xsd:all>
+   <xsd:element name="access" type="tns:accessResponse"/>
+   <xsd:element name="totalResp" type="xsd:int"/>
+  </xsd:all>
+ </xsd:complexType>
+</xsd:schema>
+</types>
+<message name="inventoryAccountRequest">
+  <part name="access" type="tns:access" />
+  <part name="variable" type="tns:variable" />
+  <part name="skuList" type="tns:skuList" />
+  <part name="supplierList" type="tns:supplierList" /></message>
+<message name="inventoryAccountResponse">
+  <part name="requestSkus" type="tns:skusResponse" /></message>
+<message name="addInventoryAccountRequest">
+  <part name="access" type="tns:access" />
+  <part name="skulist" type="tns:skus" /></message>
+<message name="addInventoryAccountResponse">
+  <part name="addrequestskus" type="tns:addSkusResponse" /></message>
+<message name="replenishmentInventoryAccountRequest">
+  <part name="access" type="tns:access" />
+  <part name="skuList" type="tns:skusReplenishment" /></message>
+<message name="replenishmentInventoryAccountResponse">
+  <part name="replenishmentSkus" type="tns:addSkusResponse" /></message>
+<message name="totalInventoryAccountRequest">
+  <part name="access" type="tns:access" /></message>
+<message name="totalInventoryAccountResponse">
+  <part name="requestTotal" type="tns:totalResponse" /></message>
+<portType name="InventoryPortType">
+  <operation name="inventoryAccount">
+    <documentation>This method return Inventory</documentation>
+    <input message="tns:inventoryAccountRequest"/>
+    <output message="tns:inventoryAccountResponse"/>
+  </operation>
+  <operation name="addInventoryAccount">
+    <documentation>This method Add Inventory item</documentation>
+    <input message="tns:addInventoryAccountRequest"/>
+    <output message="tns:addInventoryAccountResponse"/>
+  </operation>
+  <operation name="replenishmentInventoryAccount">
+    <documentation>This method upload a replenhisment</documentation>
+    <input message="tns:replenishmentInventoryAccountRequest"/>
+    <output message="tns:replenishmentInventoryAccountResponse"/>
+  </operation>
+  <operation name="totalInventoryAccount">
+    <documentation>This method return count Inventory</documentation>
+    <input message="tns:totalInventoryAccountRequest"/>
+    <output message="tns:totalInventoryAccountResponse"/>
+  </operation>
+</portType>
+<binding name="InventoryBinding" type="tns:InventoryPortType">
+  <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="inventoryAccount">
+    <soap:operation soapAction="http://integration.shipedge.com/API/Inventory_2/InventoryAPI.php/inventoryAccount" style="rpc"/>
+    <input><soap:body use="encoded" namespace="http://integration.shipedge.com/API/Inventory/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="http://integration.shipedge.com/API/Inventory/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="addInventoryAccount">
+    <soap:operation soapAction="http://integration.shipedge.com/API/Inventory_2/InventoryAPI.php/addInventoryAccount" style="rpc"/>
+    <input><soap:body use="encoded" namespace="http://integration.shipedge.com/API/Inventory/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="http://integration.shipedge.com/API/Inventory/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="replenishmentInventoryAccount">
+    <soap:operation soapAction="http://integration.shipedge.com/API/Inventory_2/InventoryAPI.php/replenishmentInventoryAccount" style="rpc"/>
+    <input><soap:body use="encoded" namespace="http://integration.shipedge.com/API/Inventory/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="http://integration.shipedge.com/API/Inventory/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="totalInventoryAccount">
+    <soap:operation soapAction="http://integration.shipedge.com/API/Inventory_2/InventoryAPI.php/totalInventoryAccount" style="rpc"/>
+    <input><soap:body use="encoded" namespace="http://integration.shipedge.com/API/Inventory/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="http://integration.shipedge.com/API/Inventory/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+</binding>
+<service name="Inventory">
+  <port name="InventoryPort" binding="tns:InventoryBinding">
+    <soap:address location="http://integration.shipedge.com/API/Inventory_2/InventoryAPI.php"/>
+  </port>
+</service>
+</definitions>
